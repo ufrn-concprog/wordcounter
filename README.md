@@ -22,37 +22,61 @@ Uma pessoa programadora necessita analisar múltiplos arquivos de texto, de tama
 
 ## Tarefas
 
-A tarefa central a ser realizada neste trabalho consiste em implementar um programa concorrente na linguagem de programação Go que realize a contagem da ocorrência de um conjunto de palavras em múltiplos arquivos de texto localizados em um diretório. O programa deve esses múltiplos arquivos e, utilizando **gorotinas e canais**, processar cada um deles de forma concorrente para contar a frequência de cada uma das palavras em todos esses arquivos. Ao final, o programa deve agregar as múltiplas contagens feitas e apresentar na saída padrão a contagem para cada arquivo e a soma total para todos os arquivos. Um exemplo de saída para o programa seria:
+A tarefa central a ser realizada neste trabalho consiste em implementar um programa concorrente na linguagem de programação Go que realize a contagem da ocorrência de um conjunto de palavras em múltiplos arquivos de texto localizados em um diretório. O programa deve esses múltiplos arquivos e, utilizando **gorotinas e canais**, processar cada um deles de forma concorrente para contar a frequência de cada uma das palavras em todos esses arquivos. Ao final, o programa deve agregar as múltiplas contagens feitas e apresentar na saída padrão a contagem para cada arquivo e a soma total para todos os arquivos.
+
+O programa deve receber via linha de comando o caminho do diretório no qual se encontra os arquivos a serem processados e, da entrada padrão, as palavras que se quer contabilizar de forma *case sensitive*. Para este trabalho, devem ser considerados os cinco arquivos de texto disponíveis no diretório [`files`](https://github.com/wordcounter/tree/master/files) deste repositório. O conteúdo desses arquivos consiste em *dummy text* na língua inglesa gerado automaticamente através do *site* [Blind Text Generator](https://www.blindtextgenerator.com/). Um exemplo de execução do programa seria:
 
 ```bash
-Palavra: "
-
-Aeronave #1: Solicitando permissão para pouso | Aeronaves aguardando pouso: 1
-Aeronave #2: Solicitando permissão para decolagem | Aeronaves aguardando decolagem: 1
-Aeronave #3: Solicitando permissão para pouso | Aeronaves aguardando pouso: 2
-Aeronave #4: Solicitando permissão para decolagem | Aeronaves aguardando decolagem: 2
-Aeronave #5: Solicitando permissão para pouso | Aeronaves aguardando pouso: 3
-Aeronave #6: Solicitando permissão para decolagem | Aeronaves aguardando decolagem: 3
-
-Aeronave #1: Pouso em andamento...
-Aeronave #1: Pouso finalizado.
-Aeronave #3: Pouso em andamento...
-Aeronave #3: Pouso finalizado.
-Aeronave #5: Pouso em andamento...
-Aeronave #5: Pouso finalizado.
-Aeronave #2: Decolagem em andamento...
-Aeronave #2: Decolagem finalizada.
-Aeronave #4: Decolagem em andamento...
-Aeronave #4: Decolagem finalizada.
-Aeronave #6: Decolagem em andamento...
-Aeronave #6: Decolagem finalizada.
-
-Todas as aeronaves completaram suas operações.
+$ wordcounter files
+Informe as palavras que deseja contabilizar, separadas por espaço:
+me and back like one
 ```
 
-O programa deve receber **via linha de comando** o caminho do diretório no qual se encontra os arquivos a serem processados. Para este trabalho, devem ser considerados os cinco arquivos de texto disponíveis no diretório [`files`](https://github.com/wordcounter/arms-golang/tree/master/files) deste repositório. O conteúdo desses arquivos consiste em *dummy text* gerado automaticamente através do *site* [Blind Text Generator](https://www.blindtextgenerator.com/).
+Para essas palavras, a saída seria:
 
-A implementação do programa deve ainda utilizar como ponto de partida o arquivo de código fonte [`wordcounter.go`](https://github.com/ufrn-concprog/wordcounter/tree/master/wordcounter.go) disponibilizado neste repositório. Esse arquivo contém apenas a implementação da função `processFile`, que recebe como parâmetro o caminho do arquivo de texto a ser processado e retorna como resultado um mapa com a contagem de ocorrência de cada uma das palavras no arquivo em questão. **Faz parte da tarefa deste trabalho modificar essa função, se necessário, para operar de forma concorrente mediante o uso de gorotinas e canais.**
+```bash
+Palavra: "me"
+- eulanguages.txt: 
+- farfaraway.txt:
+- kafka.txt:
+- pangram.txt:
+- werther.txt: 
+- Total: 
+
+Palavra: "and"
+- eulanguages.txt: 
+- farfaraway.txt:
+- kafka.txt:
+- pangram.txt:
+- werther.txt: 
+- Total: 
+
+Palavra: "back"
+- eulanguages.txt: 
+- farfaraway.txt:
+- kafka.txt:
+- pangram.txt:
+- werther.txt: 
+- Total: 
+
+Palavra: "like"
+- eulanguages.txt: 
+- farfaraway.txt:
+- kafka.txt:
+- pangram.txt:
+- werther.txt: 
+- Total: 
+
+Palavra: "one"
+- eulanguages.txt: 
+- farfaraway.txt:
+- kafka.txt:
+- pangram.txt:
+- werther.txt: 
+- Total: 
+```
+
+A implementação do programa deve ainda utilizar como ponto de partida o arquivo de código fonte [`wordcounter.go`](https://github.com/ufrn-concprog/wordcounter/tree/master/wordcounter.go) disponibilizado neste repositório. Esse arquivo contém apenas a implementação da função `processFile`, que recebe como parâmetro o caminho do arquivo de texto a ser processado, além do trecho da função principal (`main`) que implementa a entrada do programa. A contagem de palavras deve ser armazenada em uma estrutura de dados do tipo *map* em que as chaves referem-se às palavras e os valores referem-se à frequência delas no arquivo em questão, ou seja, `map[string]int`. **Faz parte da tarefa deste trabalho modificar essa função e/ou criar outras, se necessário, para operar de forma concorrente mediante o uso de gorotinas e canais.**
 
 ## Autoria e política de colaboração
 
