@@ -4,12 +4,11 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"path/filepath"
 	"strings"
 )
 
 // Reads a file and counts occurrences of specific words
-func processFile(filepath string, words []string) map[string]int {
+func processFile(filepath string, words []string) {
 	file, err := os.Open(filepath)
 	if err != nil {
 		fmt.Printf("Erro ao abrir o arquivo %s: %v\n", filepath, err)
@@ -39,8 +38,6 @@ func processFile(filepath string, words []string) map[string]int {
 			}
 		}
 	}
-
-	return wordCount
 }
 
 func main() {
@@ -58,14 +55,4 @@ func main() {
 	scanner.Scan()
 	input := scanner.Text()
 	words := strings.Split(input, " ")
-
-	for _, word := range words {
-		fmt.Printf("\nPalavra: \"%s\"\n", word)
-		for _, file := range files {
-			if !file.IsDir() {
-				results := processFile(filepath.Join(dir, file.Name()), words)
-				fmt.Printf("- %s: %d\n", file.Name(), results[word])
-			}
-		}
-	}
 }
