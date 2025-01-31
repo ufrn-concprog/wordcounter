@@ -36,44 +36,44 @@ Para essas palavras, a saída seria:
 
 ```bash
 Palavra: "me"
-- eulanguages.txt: 
-- farfaraway.txt:
-- kafka.txt:
-- pangram.txt:
-- werther.txt: 
-- Total: 
+- eulanguages.txt: 69
+- farfaraway.txt: 0
+- kafka.txt: 0
+- pangram.txt: 0
+- werther.txt: 0
+- Total: 69
 
 Palavra: "and"
-- eulanguages.txt: 
-- farfaraway.txt:
-- kafka.txt:
-- pangram.txt:
-- werther.txt: 
-- Total: 
+- eulanguages.txt: 280
+- farfaraway.txt: 377
+- kafka.txt: 223
+- pangram.txt: 150
+- werther.txt: 406
+- Total: 1436
 
 Palavra: "back"
-- eulanguages.txt: 
-- farfaraway.txt:
-- kafka.txt:
-- pangram.txt:
-- werther.txt: 
-- Total: 
+- eulanguages.txt: 0
+- farfaraway.txt: 32
+- kafka.txt: 50
+- pangram.txt: 0
+- werther.txt: 0
+- Total: 82
 
 Palavra: "like"
-- eulanguages.txt: 
-- farfaraway.txt:
-- kafka.txt:
-- pangram.txt:
-- werther.txt: 
-- Total: 
+- eulanguages.txt: 70
+- farfaraway.txt: 0
+- kafka.txt: 29
+- pangram.txt: 0
+- werther.txt: 95
+- Total: 194
 
 Palavra: "one"
-- eulanguages.txt: 
-- farfaraway.txt:
-- kafka.txt:
-- pangram.txt:
-- werther.txt: 
-- Total: 
+- eulanguages.txt: 70
+- farfaraway.txt: 0
+- kafka.txt: 10
+- pangram.txt: 0
+- werther.txt: 0
+- Total: 80
 ```
 
 A implementação do programa deve ainda utilizar como ponto de partida o arquivo de código fonte [`wordcounter.go`](https://github.com/ufrn-concprog/wordcounter/tree/master/wordcounter.go) disponibilizado neste repositório. Esse arquivo contém apenas a implementação da função `processFile`, que recebe como parâmetro o caminho do arquivo de texto a ser processado, além do trecho da função principal (`main`) que implementa a entrada do programa. A contagem de palavras deve ser armazenada em uma estrutura de dados do tipo *map* em que as chaves referem-se às palavras e os valores referem-se à frequência delas no arquivo em questão, ou seja, `map[string]int`. **Faz parte da tarefa deste trabalho modificar essa função e/ou criar outras, se necessário, para operar de forma concorrente mediante o uso de gorotinas e canais.**
